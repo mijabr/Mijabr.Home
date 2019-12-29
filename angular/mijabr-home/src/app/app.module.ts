@@ -16,7 +16,6 @@ import { LibraryModule } from './library/module/library.module';
 import { LoginComponent } from './shared/component/login/login.component';
 import { LoginService } from './shared/service/login.service';
 import { UserService } from './shared/service/user.service';
-import { LinkComponent } from './library/component/link/link.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +23,7 @@ import { LinkComponent } from './library/component/link/link.component';
     ToolbarComponent,
     FooterComponent,
     IntroMenuComponent,
-    LoginComponent,
-    LinkComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,

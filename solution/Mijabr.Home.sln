@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{F9377349-BDD8-4478-85A3-0B99512A2E69}"
 	ProjectSection(SolutionItems) = preProject
 		..\.dockerignore = ..\.dockerignore
+		..\.gitignore = ..\.gitignore
 		..\Dockerfile = ..\Dockerfile
 		..\Dockerfile.arm = ..\Dockerfile.arm
 		..\make.ps1 = ..\make.ps1

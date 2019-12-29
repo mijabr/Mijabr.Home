@@ -31,7 +31,7 @@ namespace Mijabr.Home
                 await next();
                 if (context.Response.StatusCode == 404)
                 {
-                    context.Request.Path = "/index.html";
+                    context.Request.Path = "/home/index.html";
                     await next();
                 }
             });
