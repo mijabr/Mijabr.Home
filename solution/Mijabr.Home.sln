@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mijabr.Home", "..\lib\Mijabr.Home\Mijabr.Home.csproj", "{22EE5A34-071D-40E6-AED1-2FB98598C90C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{2BF3365A-04E4-4DA0-9B23-7A140B9C1A3B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{F9377349-BDD8-4478-85A3-0B99512A2E69}"
+	ProjectSection(SolutionItems) = preProject
+		..\.dockerignore = ..\.dockerignore
+		..\Dockerfile = ..\Dockerfile
+		..\Dockerfile.arm = ..\Dockerfile.arm
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22EE5A34-071D-40E6-AED1-2FB98598C90C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22EE5A34-071D-40E6-AED1-2FB98598C90C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22EE5A34-071D-40E6-AED1-2FB98598C90C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22EE5A34-071D-40E6-AED1-2FB98598C90C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{22EE5A34-071D-40E6-AED1-2FB98598C90C} = {2BF3365A-04E4-4DA0-9B23-7A140B9C1A3B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A076F599-5085-4AE8-9FDC-955D81445166}
+	EndGlobalSection
+EndGlobal
