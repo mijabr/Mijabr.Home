@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{F9377349
 		..\.dockerignore = ..\.dockerignore
 		..\Dockerfile = ..\Dockerfile
 		..\Dockerfile.arm = ..\Dockerfile.arm
+		..\make.ps1 = ..\make.ps1
 	EndProjectSection
 EndProject
 Global

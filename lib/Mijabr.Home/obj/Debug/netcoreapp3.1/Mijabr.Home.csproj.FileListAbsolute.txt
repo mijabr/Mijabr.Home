@@ -51,4 +51,3 @@ C:\Sandbox\mijabr\mijabr2\Mijabr.Home\lib\Mijabr.Home\obj\Debug\netcoreapp3.1\Mi
 C:\Sandbox\mijabr\mijabr2\Mijabr.Home\lib\Mijabr.Home\obj\Debug\netcoreapp3.1\Mijabr.Home.RazorTargetAssemblyInfo.cache
 C:\Sandbox\mijabr\mijabr2\Mijabr.Home\lib\Mijabr.Home\obj\Debug\netcoreapp3.1\Mijabr.Home.dll
 C:\Sandbox\mijabr\mijabr2\Mijabr.Home\lib\Mijabr.Home\obj\Debug\netcoreapp3.1\Mijabr.Home.pdb
-C:\Sandbox\mijabr\mijabr2\Mijabr.Home\lib\Mijabr.Home\obj\Debug\netcoreapp3.1\Mijabr.Home.csprojAssemblyReference.cache

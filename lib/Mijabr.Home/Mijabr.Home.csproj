@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <Target Name="TryCopyFrontEnd" Condition="$(Configuration) == 'DEBUG'" AfterTargets="PostBuildEvent">
-    <Exec Command="IF EXIST &quot;$(ProjectDir)..\..\angular\mijabr-home\dist\mijabr-home&quot; (xcopy /i /y /s &quot;$(ProjectDir)..\..\angular\mijabr-home\dist\mijabr-home\*.*&quot; &quot;$(ProjectDir)\wwwroot\.&quot;)" />
+    <Exec Command="IF EXIST &quot;$(ProjectDir)..\..\angular\mijabr-home\dist\mijabr-home&quot; (xcopy /i /y /s &quot;$(ProjectDir)..\..\angular\mijabr-home\dist\mijabr-home\*.*&quot; &quot;$(ProjectDir)\wwwroot\home\.&quot;)" />
   </Target>
 
 </Project>
