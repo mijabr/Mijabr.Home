@@ -28,6 +28,12 @@ namespace Mijabr.Home
 
             app.Use(async (context, next) =>
             {
+                Console.WriteLine($"Home Request: {context.Request.Path}");
+                await next();
+            });
+
+            app.Use(async (context, next) =>
+            {
                 await next();
                 if (context.Response.StatusCode == 404)
                 {
