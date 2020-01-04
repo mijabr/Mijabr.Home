@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthModule, OidcSecurityService, OidcConfigService } from 'angular-auth-oidc-client';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './shared/component/toolbar/toolbar.component';
@@ -16,6 +17,7 @@ import { LibraryModule } from './library/module/library.module';
 import { LoginComponent } from './shared/component/login/login.component';
 import { LoginService } from './shared/service/login.service';
 import { UserService } from './shared/service/user.service';
+import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { UserService } from './shared/service/user.service';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    AuthModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
@@ -36,6 +39,9 @@ import { UserService } from './shared/service/user.service';
   ],
   providers: [
     EnvironmentService,
+    OidcSecurityService,
+    OidcConfigService,
+    AuthenticationService,
     ApiService,
     VersionService,
     LoginService,
@@ -43,4 +49,11 @@ import { UserService } from './shared/service/user.service';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(
+    private authenticationService: AuthenticationService,
+  ) {
+    this.authenticationService.initialise();
+  }
+}
+

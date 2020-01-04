@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.0" />
+  </ItemGroup>
+
   <Target Name="TryCopyFrontEnd" Condition="$(Configuration) == 'DEBUG'" AfterTargets="PostBuildEvent">
     <Exec Command="IF EXIST &quot;$(ProjectDir)..\..\angular\mijabr-home\dist\mijabr-home&quot; (xcopy /i /y /s &quot;$(ProjectDir)..\..\angular\mijabr-home\dist\mijabr-home\*.*&quot; &quot;$(ProjectDir)\wwwroot\home\.&quot;)" />
   </Target>
