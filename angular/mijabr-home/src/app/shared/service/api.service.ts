@@ -16,7 +16,7 @@ export class ApiService {
   post(url: string, body?: any): Observable<any> {
     if (this.environment.isProduction()) {
       const headers = new HttpHeaders();
-      this.createAuthorizationHeader(headers);
+      // this.createAuthorizationHeader(headers);
       return this.http.post(url, body, {
         headers: headers
       });
@@ -30,8 +30,8 @@ export class ApiService {
     return this.http.get(url, {});
   }
 
-  createAuthorizationHeader(headers: HttpHeaders) {
-    const token = this.userService.getUser().token;
-    headers.append('Authorization', 'Bearer ' + token);
-  }
+  // createAuthorizationHeader(headers: HttpHeaders) {
+  //   const token = this.userService.getUser().token;
+  //   headers.append('Authorization', 'Bearer ' + token);
+  // }
 }

@@ -21,15 +21,15 @@ namespace Mijabr.Home
                 {
                     options.Authority = "http://identity/";
                     options.RequireHttpsMetadata = false;
-                    options.Audience = "Monitoring";
+                    options.Audience = "home";
                 });
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseAuthentication();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -43,21 +43,27 @@ namespace Mijabr.Home
 
             app.Use(async (context, next) =>
             {
-                await next();
-                if (context.Response.StatusCode == 404)
+                if (context.Request.Path.StartsWithSegments(new PathString("/home")))
                 {
-                    context.Request.Path = "/home/index.html";
                     await next();
+                    if (context.Response.StatusCode == 404)
+                    {
+                        context.Request.Path = "/home/index.html";
+                        await next();
+                    }
                 }
             });
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseStaticFiles();
 
-            //app.UseEndpoints(endpoints =>
-            //    endpoints.MapDefaultControllerRoute()
-            //);
+            app.UseEndpoints(endpoints =>
+                endpoints.MapDefaultControllerRoute()
+            );
 
             //app.UseEndpoints(endpoints =>
             //{

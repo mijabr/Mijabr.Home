@@ -19,7 +19,7 @@ switch ($selection)
     2 {docker push mijabr/mijabr-${name}:arm}
     3 {docker buildx build -t mijabr/mijabr-${name}:arm -f Dockerfile.arm --platform linux/arm .; docker push mijabr/mijabr-${name}:arm}
 
-    11 {docker buildx build -t mijabr/mijabr-${name}:amd86 .}
+    11 {docker build -t mijabr/mijabr-${name}:amd86 .}
     12 {docker push mijabr/mijabr-${name}:amd86}
     13 {docker build -t mijabr/mijabr-${name}:amd86 .; docker push mijabr/mijabr-${name}:amd86}
 }

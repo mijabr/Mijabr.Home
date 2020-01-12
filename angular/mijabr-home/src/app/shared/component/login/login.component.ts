@@ -26,11 +26,11 @@ export class LoginComponent implements OnInit {
     passwordConfirm: ['', Validators.required]
   });
 
-  private show = false;
-  private joinMode = false;
-  private loginFormSubmitted = false;
-  private joinFormSubmitted = false;
-  private failReason: string;
+  public show = false;
+  public joinMode = false;
+  public loginFormSubmitted = false;
+  public joinFormSubmitted = false;
+  public failReason: string;
 
   constructor(
     private fb: FormBuilder,

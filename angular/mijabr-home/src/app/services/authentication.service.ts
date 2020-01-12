@@ -30,9 +30,9 @@ export class AuthenticationService {
     return location.protocol + '//' + location.host;
   }
 
-  private idBaseUrl(): string {
-    return location.protocol + '//' + location.host.replace('home', 'id');
-  }
+  // private idBaseUrl(): string {
+  //   return location.protocol + '//' + location.host.replace('home', 'id');
+  // }
 
   public get loggedIn(): Observable<boolean> {
     return this.oidcSecurityService.getIsAuthorized();
@@ -81,13 +81,13 @@ export class AuthenticationService {
 
   private getOpenIdConfiguration(): OpenIdConfiguration {
     return {
-      stsServer: this.idBaseUrl(),
+      stsServer: this.thisBaseUrl(),
       redirect_url: this.thisBaseUrl() + '/redirect',
       client_id: 'home-client',
       response_type: 'code',
       scope: 'openid profile home', //
-      post_logout_redirect_uri: this.thisBaseUrl(),
-      post_login_route: '/',
+      // post_logout_redirect_uri: this.thisBaseUrl() + "/home",
+      post_login_route: '/logout',
       log_console_warning_active: true,
       //  log_console_debug_active: true,
       max_id_token_iat_offset_allowed_in_seconds: 30,
@@ -97,15 +97,29 @@ export class AuthenticationService {
 
   private getAuthWellKnownEndpoints(): AuthWellKnownEndpoints {
     return {
-      jwks_uri: this.idBaseUrl() + '/.well-known/openid-configuration/jwks',
-      issuer: this.idBaseUrl(),
-      authorization_endpoint: this.idBaseUrl() + '/connect/authorize',
-      token_endpoint: this.idBaseUrl() + '/connect/token',
-      userinfo_endpoint: this.idBaseUrl() + '/connect/userinfo',
-      end_session_endpoint: this.idBaseUrl() + '/connect/endsession',
-      check_session_iframe: this.idBaseUrl() + '/connect/checksession',
-      revocation_endpoint: this.idBaseUrl() + '/connect/revocation',
-      introspection_endpoint: this.idBaseUrl() + '/connect/introspect',
+      jwks_uri: this.thisBaseUrl() + '/.well-known/openid-configuration/jwks',
+      issuer: this.thisBaseUrl(),
+      authorization_endpoint: this.thisBaseUrl() + '/connect/authorize',
+      token_endpoint: this.thisBaseUrl() + '/connect/token',
+      userinfo_endpoint: this.thisBaseUrl() + '/connect/userinfo',
+      end_session_endpoint: this.thisBaseUrl() + '/connect/endsession',
+      check_session_iframe: this.thisBaseUrl() + '/connect/checksession',
+      revocation_endpoint: this.thisBaseUrl() + '/connect/revocation',
+      introspection_endpoint: this.thisBaseUrl() + '/connect/introspect',
     };
   }
+
+  // private getAuthWellKnownEndpoints(): AuthWellKnownEndpoints {
+  //   return {
+  //     jwks_uri: this.idBaseUrl() + '/.well-known/openid-configuration/jwks',
+  //     issuer: this.idBaseUrl(),
+  //     authorization_endpoint: this.idBaseUrl() + '/connect/authorize',
+  //     token_endpoint: this.idBaseUrl() + '/connect/token',
+  //     userinfo_endpoint: this.idBaseUrl() + '/connect/userinfo',
+  //     end_session_endpoint: this.idBaseUrl() + '/connect/endsession',
+  //     check_session_iframe: this.idBaseUrl() + '/connect/checksession',
+  //     revocation_endpoint: this.idBaseUrl() + '/connect/revocation',
+  //     introspection_endpoint: this.idBaseUrl() + '/connect/introspect',
+  //   };
+  // }
 }

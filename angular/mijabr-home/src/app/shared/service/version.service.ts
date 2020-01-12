@@ -11,6 +11,6 @@ export class VersionService {
   ) { }
 
   getVersion(): Observable<AppVersion> {
-    return this.apiService.post('api/version');
+    return this.apiService.post('home/api/version');
   }
 }

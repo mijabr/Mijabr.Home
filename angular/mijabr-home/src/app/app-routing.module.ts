@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IntroMenuComponent } from './intro-menu/intro-menu.component';
+import { LogOutComponent } from './log-out/log-out.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,12 @@ const routes: Routes = [
   {
     path: 'intro-menu',
     component: IntroMenuComponent
-  }//,
+  },
+  {
+    path: 'logout',
+    component: LogOutComponent
+  }
+  //,
   // {
   //   path: 'about',
   //   loadChildren: 'app/about/module/about.module#AboutModule'
