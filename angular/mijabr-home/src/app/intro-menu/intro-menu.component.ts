@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class IntroMenuComponent implements OnInit {
 
   ships: any = [
-    { Label: 'Scrabble', Position: 5, Route: '/scrabble/game' },
-    { Label: 'Recipes', Position: 4, Route: '/recipes' },
-    { Label: 'Animatus', Position: 3, Route: '/animatus' },
-    { Label: 'Racing', Position: 2, Route: '/racing' },
-    { Label: 'About', Position: 1, Route: '/about' }
+    { Label: 'Scrabble', Position: 5, Route: '/scrabble/scrabble/game' },
+    { Label: 'Recipes', Position: 4, Route: '/recipes/recipes' },
+    { Label: 'Animatus', Position: 3, Route: '/animatus/animatus' },
+    { Label: 'Racing', Position: 2, Route: '/racing/racing' },
+    { Label: 'About', Position: 1, Route: '/about/about' }
   ];
 
   constructor() { }
