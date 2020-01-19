@@ -9,7 +9,7 @@ namespace Mijabr.Home.Controllers
     public class VersionController : Controller
     {
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public dynamic Version()
         {
             return new { Version = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>().Version };

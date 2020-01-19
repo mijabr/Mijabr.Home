@@ -82,11 +82,11 @@ export class AuthenticationService {
   private getOpenIdConfiguration(): OpenIdConfiguration {
     return {
       stsServer: this.thisBaseUrl(),
-      redirect_url: this.thisBaseUrl() + '/redirect',
+      redirect_url: this.thisBaseUrl() + '/home/redirect',
       client_id: 'home-client',
       response_type: 'code',
       scope: 'openid profile home', //
-      // post_logout_redirect_uri: this.thisBaseUrl() + "/home",
+      post_logout_redirect_uri: this.thisBaseUrl() + "/home",
       post_login_route: '/logout',
       log_console_warning_active: true,
       //  log_console_debug_active: true,

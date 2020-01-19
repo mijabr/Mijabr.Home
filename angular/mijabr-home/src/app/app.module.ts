@@ -20,6 +20,7 @@ import { LoginService } from './shared/service/login.service';
 import { UserService } from './shared/service/user.service';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthenticationInterceptor } from './services/authentication.interceptor';
+import { RedirectComponent } from './shared/component/redirect/redirect.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AuthenticationInterceptor } from './services/authentication.interceptor
     ToolbarComponent,
     FooterComponent,
     IntroMenuComponent,
+    RedirectComponent,
     LoginComponent,
     LogOutComponent
   ],

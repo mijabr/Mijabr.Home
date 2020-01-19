@@ -2,21 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IntroMenuComponent } from './intro-menu/intro-menu.component';
 import { LogOutComponent } from './log-out/log-out.component';
+import { RedirectComponent } from './shared/component/redirect/redirect.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/intro-menu',
-    pathMatch: 'full'
-  },
-  {
-    path: 'intro-menu',
-    component: IntroMenuComponent
-  },
-  {
-    path: 'logout',
-    component: LogOutComponent
-  }
+  { path: '', redirectTo: '/intro-menu', pathMatch: 'full' },
+  { path: 'intro-menu', component: IntroMenuComponent },
+  { path: 'logout', component: LogOutComponent },
+  { path: 'redirect', component: RedirectComponent }
+
   //,
   // {
   //   path: 'about',
