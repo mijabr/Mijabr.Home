@@ -17,13 +17,17 @@ export class RedirectComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    console.log("RedirectComponent::ngOnInit")
     this.authenticationService.completeAuthentication().subscribe(authState => {
       this.authenticating = false;
       if (authState === 'forbidden') {
+        console.log(`completeAuthentication->forbidden`);
         this.message = 'Forbidden';
       } else if (authState === 'unauthorized') {
+        console.log(`completeAuthentication->unauthorized`);
         this.message = 'Unauthorized';
       } else if (authState === 'authorized') {
+        console.log(`completeAuthentication->authorized`);
         this.router.navigate(['/']);
       }
     });

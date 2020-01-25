@@ -1,6 +1,5 @@
-﻿using System.Reflection;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 
 namespace Mijabr.Home.Controllers
 {
@@ -9,7 +8,6 @@ namespace Mijabr.Home.Controllers
     public class VersionController : Controller
     {
         [HttpPost]
-        [Authorize]
         public dynamic Version()
         {
             return new { Version = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>().Version };

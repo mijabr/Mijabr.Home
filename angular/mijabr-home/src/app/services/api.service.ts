@@ -16,7 +16,6 @@ export class ApiService {
   post(url: string, body?: any): Observable<any> {
     if (this.environment.isProduction()) {
       const headers = new HttpHeaders();
-      // this.createAuthorizationHeader(headers);
       return this.http.post(url, body, {
         headers: headers
       });

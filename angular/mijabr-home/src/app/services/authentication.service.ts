@@ -44,6 +44,10 @@ export class AuthenticationService {
     );
   }
 
+  public logIn() {
+    this.oidcSecurityService.authorize();
+  }
+
   public logOut() {
     this.oidcSecurityService.logoff();
   }
@@ -87,7 +91,7 @@ export class AuthenticationService {
       response_type: 'code',
       scope: 'openid profile home', //
       post_logout_redirect_uri: this.thisBaseUrl() + "/home",
-      post_login_route: '/logout',
+      post_login_route: '/home',
       log_console_warning_active: true,
       //  log_console_debug_active: true,
       max_id_token_iat_offset_allowed_in_seconds: 30,

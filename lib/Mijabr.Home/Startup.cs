@@ -45,9 +45,11 @@ namespace Mijabr.Home
             {
                 if (context.Request.Path.StartsWithSegments(new PathString("/home")))
                 {
+                    Console.WriteLine($"Home Request 404 candidate: {context.Request.Path}");
                     await next();
                     if (context.Response.StatusCode == 404)
                     {
+                        Console.WriteLine($"Home Request forward to /home/index.html: {context.Request.Path}");
                         context.Request.Path = "/home/index.html";
                         await next();
                     }

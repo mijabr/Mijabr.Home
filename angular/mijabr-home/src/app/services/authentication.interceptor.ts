@@ -17,6 +17,8 @@ export class AuthenticationInterceptor implements HttpInterceptor {
 
         const token = this.oidcSecurityService.getToken();
 
+        console.log(`token is ${token}`);
+        
         if (token !== '') {
             const tokenValue = 'Bearer ' + token;
             request = request.clone({ setHeaders: { Authorization: tokenValue } });

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { UserService } from '../../service/user.service';
+import { UserService } from '../../services/user.service';
 import { LoginComponent } from '../login/login.component';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -11,7 +11,6 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 export class ToolbarComponent implements OnInit {
 
   @Input() title;
-  @ViewChild('login', null) login: LoginComponent;
 
   username = '';
   loggedIn = false;
@@ -32,6 +31,6 @@ export class ToolbarComponent implements OnInit {
   }
 
   onClickAccount() {
-    this.login.open();
+    this.authenticationService.logIn();
   }
 }

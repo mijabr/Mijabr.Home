@@ -7,20 +7,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule, OidcSecurityService, OidcConfigService } from 'angular-auth-oidc-client';
 
 import { AppComponent } from './app.component';
-import { ToolbarComponent } from './shared/component/toolbar/toolbar.component';
-import { FooterComponent } from './shared/component/footer/footer.component';
-import { IntroMenuComponent } from './intro-menu/intro-menu.component';
-import { EnvironmentService } from './shared/service/environment.service';
-import { ApiService } from './shared/service/api.service';
-import { VersionService } from './shared/service/version.service';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { IntroMenuComponent } from './components/intro-menu/intro-menu.component';
+import { EnvironmentService } from './services/environment.service';
+import { ApiService } from './services/api.service';
+import { VersionService } from './services/version.service';
 import { LibraryModule } from './library/module/library.module';
-import { LoginComponent } from './shared/component/login/login.component';
-import { LogOutComponent } from './log-out/log-out.component';
-import { LoginService } from './shared/service/login.service';
-import { UserService } from './shared/service/user.service';
+import { LoginComponent } from './components/login/login.component';
+import { LoginService } from './services/login.service';
+import { UserService } from './services/user.service';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthenticationInterceptor } from './services/authentication.interceptor';
-import { RedirectComponent } from './shared/component/redirect/redirect.component';
+import { RedirectComponent } from './components/redirect/redirect.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +28,7 @@ import { RedirectComponent } from './shared/component/redirect/redirect.componen
     FooterComponent,
     IntroMenuComponent,
     RedirectComponent,
-    LoginComponent,
-    LogOutComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -66,4 +64,3 @@ export class AppModule {
     this.authenticationService.initialise();
   }
 }
-

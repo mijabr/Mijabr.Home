@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output, HostListener, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { LoginService } from '../../service/login.service';
-import { UserService } from '../../service/user.service';
+import { LoginService } from '../../services/login.service';
+import { UserService } from '../../services/user.service';
 import { LoginResponse } from '../../model/login-response';
 
 @Component({
