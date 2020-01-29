@@ -4,7 +4,7 @@ import { IntroMenuComponent } from './components/intro-menu/intro-menu.component
 import { RedirectComponent } from './components/redirect/redirect.component';
 
 const routes: Routes = [
-  { path: '/', redirectTo: '/intro-menu', pathMatch: 'full' },
+  { path: '', redirectTo: '/intro-menu', pathMatch: 'full' },
   { path: 'intro-menu', component: IntroMenuComponent },
   { path: 'redirect', component: RedirectComponent }
 

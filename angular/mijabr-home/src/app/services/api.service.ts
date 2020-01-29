@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { EnvironmentService } from './environment.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { UserService } from './user.service';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -9,16 +8,12 @@ export class ApiService {
 
   constructor(
     private http: HttpClient,
-    private environment: EnvironmentService,
-    private userService: UserService
+    private environment: EnvironmentService
   ) { }
 
   post(url: string, body?: any): Observable<any> {
     if (this.environment.isProduction()) {
-      const headers = new HttpHeaders();
-      return this.http.post(url, body, {
-        headers: headers
-      });
+      return this.http.post(url, body);
     } else {
       return this.mockApi(url);
     }
@@ -28,9 +23,4 @@ export class ApiService {
     url = `http://localhost:3004/${url}`;
     return this.http.get(url, {});
   }
-
-  // createAuthorizationHeader(headers: HttpHeaders) {
-  //   const token = this.userService.getUser().token;
-  //   headers.append('Authorization', 'Bearer ' + token);
-  // }
 }

@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { UserService } from '../../services/user.service';
-import { LoginComponent } from '../login/login.component';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -10,24 +8,23 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class ToolbarComponent implements OnInit {
 
-  @Input() title;
+  @Input() title: string;
 
   username = '';
-  loggedIn = false;
+  isLoggedin = false;
 
   constructor(
-    private authenticationService: AuthenticationService,
-    private userService: UserService
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {
-    this.username = this.userService.getUser().username;
-    this.userService.loginEvent().subscribe((response: string) => {
-      this.username = response;
+    this.authenticationService.getUserData().subscribe(userData => {
+      this.username = userData.name;
     });
-    this.authenticationService.loggedIn.subscribe(r =>
-        this.loggedIn = r
-      );
+
+    this.authenticationService.loggedIn.subscribe(isLoggedin => {
+      this.isLoggedin = isLoggedin
+    });
   }
 
   onClickAccount() {

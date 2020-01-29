@@ -4,13 +4,12 @@ import {
   OidcSecurityService,
   OpenIdConfiguration,
   AuthWellKnownEndpoints,
-  OidcSecurityStorage,
   AuthorizationState
 } from 'angular-auth-oidc-client';
 
 import { Observable } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
-import { map, filter, take, switchMap, tap, flatMap, catchError } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { map,  take, switchMap, tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -26,13 +25,15 @@ export class AuthenticationService {
     private route: ActivatedRoute
   ) { }
 
+  private href = 'home';
+
   private thisBaseUrl(): string {
-    return location.protocol + '//' + location.host;
+    return location.protocol + '//' + location.host + '/' + this.href;
   }
 
-  // private idBaseUrl(): string {
-  //   return location.protocol + '//' + location.host.replace('home', 'id');
-  // }
+  private idBaseUrl(): string {
+    return location.protocol + '//' + location.host;
+  }
 
   public get loggedIn(): Observable<boolean> {
     return this.oidcSecurityService.getIsAuthorized();
@@ -50,6 +51,10 @@ export class AuthenticationService {
 
   public logOut() {
     this.oidcSecurityService.logoff();
+  }
+
+  public getUserData(): Observable<any> {
+    return this.oidcSecurityService.getUserData();
   }
 
   public initialise() {
@@ -85,15 +90,15 @@ export class AuthenticationService {
 
   private getOpenIdConfiguration(): OpenIdConfiguration {
     return {
-      stsServer: this.thisBaseUrl(),
-      redirect_url: this.thisBaseUrl() + '/home/redirect',
+      stsServer: this.idBaseUrl(),
+      redirect_url: this.thisBaseUrl() + '/redirect',
       client_id: 'home-client',
       response_type: 'code',
-      scope: 'openid profile home', //
-      post_logout_redirect_uri: this.thisBaseUrl() + "/home",
-      post_login_route: '/home',
+      scope: 'openid profile home',
+      post_logout_redirect_uri: this.thisBaseUrl(),
+  //  post_login_route: 'home',
       log_console_warning_active: true,
-      //  log_console_debug_active: true,
+  //  log_console_debug_active: true,
       max_id_token_iat_offset_allowed_in_seconds: 30,
       start_checksession: true
     };
@@ -101,29 +106,15 @@ export class AuthenticationService {
 
   private getAuthWellKnownEndpoints(): AuthWellKnownEndpoints {
     return {
-      jwks_uri: this.thisBaseUrl() + '/.well-known/openid-configuration/jwks',
-      issuer: this.thisBaseUrl(),
-      authorization_endpoint: this.thisBaseUrl() + '/connect/authorize',
-      token_endpoint: this.thisBaseUrl() + '/connect/token',
-      userinfo_endpoint: this.thisBaseUrl() + '/connect/userinfo',
-      end_session_endpoint: this.thisBaseUrl() + '/connect/endsession',
-      check_session_iframe: this.thisBaseUrl() + '/connect/checksession',
-      revocation_endpoint: this.thisBaseUrl() + '/connect/revocation',
-      introspection_endpoint: this.thisBaseUrl() + '/connect/introspect',
+      jwks_uri: this.idBaseUrl() + '/.well-known/openid-configuration/jwks',
+      issuer: this.idBaseUrl(),
+      authorization_endpoint: this.idBaseUrl() + '/connect/authorize',
+      token_endpoint: this.idBaseUrl() + '/connect/token',
+      userinfo_endpoint: this.idBaseUrl() + '/connect/userinfo',
+      end_session_endpoint: this.idBaseUrl() + '/connect/endsession',
+      check_session_iframe: this.idBaseUrl() + '/connect/checksession',
+      revocation_endpoint: this.idBaseUrl() + '/connect/revocation',
+      introspection_endpoint: this.idBaseUrl() + '/connect/introspect',
     };
   }
-
-  // private getAuthWellKnownEndpoints(): AuthWellKnownEndpoints {
-  //   return {
-  //     jwks_uri: this.idBaseUrl() + '/.well-known/openid-configuration/jwks',
-  //     issuer: this.idBaseUrl(),
-  //     authorization_endpoint: this.idBaseUrl() + '/connect/authorize',
-  //     token_endpoint: this.idBaseUrl() + '/connect/token',
-  //     userinfo_endpoint: this.idBaseUrl() + '/connect/userinfo',
-  //     end_session_endpoint: this.idBaseUrl() + '/connect/endsession',
-  //     check_session_iframe: this.idBaseUrl() + '/connect/checksession',
-  //     revocation_endpoint: this.idBaseUrl() + '/connect/revocation',
-  //     introspection_endpoint: this.idBaseUrl() + '/connect/introspect',
-  //   };
-  // }
 }

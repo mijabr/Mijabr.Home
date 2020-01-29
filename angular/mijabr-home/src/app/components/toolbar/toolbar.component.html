@@ -1,4 +1,3 @@
-<app-login #login></app-login>
 <div class='toolbar-wrap'>
   <div class='toolbar'>
     <div class='home'>
@@ -10,6 +9,6 @@
     <div class='account' (click)='onClickAccount()'>
       <lib-icon-account background='black' fill='white' size='24'></lib-icon-account>
     </div>
-    <div class='username'>{{username}}</div>
+    <div *ngId='isLoggedin' class='username'>Greetings {{username}}</div>
   </div>
 </div>

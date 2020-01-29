@@ -16,8 +16,6 @@ export class AuthenticationInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
         const token = this.oidcSecurityService.getToken();
-
-        console.log(`token is ${token}`);
         
         if (token !== '') {
             const tokenValue = 'Bearer ' + token;

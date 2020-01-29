@@ -14,9 +14,6 @@ import { EnvironmentService } from './services/environment.service';
 import { ApiService } from './services/api.service';
 import { VersionService } from './services/version.service';
 import { LibraryModule } from './library/module/library.module';
-import { LoginComponent } from './components/login/login.component';
-import { LoginService } from './services/login.service';
-import { UserService } from './services/user.service';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthenticationInterceptor } from './services/authentication.interceptor';
 import { RedirectComponent } from './components/redirect/redirect.component';
@@ -27,8 +24,7 @@ import { RedirectComponent } from './components/redirect/redirect.component';
     ToolbarComponent,
     FooterComponent,
     IntroMenuComponent,
-    RedirectComponent,
-    LoginComponent
+    RedirectComponent
   ],
   imports: [
     BrowserModule,
@@ -51,9 +47,7 @@ import { RedirectComponent } from './components/redirect/redirect.component';
     OidcConfigService,
     AuthenticationService,
     ApiService,
-    VersionService,
-    LoginService,
-    UserService
+    VersionService
   ],
   bootstrap: [AppComponent]
 })
