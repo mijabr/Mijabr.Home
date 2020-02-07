@@ -28,6 +28,10 @@ export class ToolbarComponent implements OnInit {
   }
 
   onClickAccount() {
-    this.authenticationService.logIn();
+    if (this.isLoggedin) {
+      this.authenticationService.logOut();
+    } else {
+      this.authenticationService.logIn();
+    }
   }
 }

@@ -30,9 +30,9 @@ import { RedirectComponent } from './components/redirect/redirect.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    AuthModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
+    AuthModule.forRoot(),
     AppRoutingModule,
     LibraryModule
   ],

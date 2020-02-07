@@ -25,14 +25,16 @@ export class AuthenticationService {
     private route: ActivatedRoute
   ) { }
 
-  private href = 'home';
-
   private thisBaseUrl(): string {
-    return location.protocol + '//' + location.host + '/' + this.href;
+    return location.protocol + '//' + location.host + '/home';
   }
 
   private idBaseUrl(): string {
-    return location.protocol + '//' + location.host;
+    if (location.host === 'localtest.me') {
+      return location.protocol + '//id.' + location.host;
+    } else {
+      return location.protocol + '//id-' + location.host;
+    }
   }
 
   public get loggedIn(): Observable<boolean> {
@@ -96,18 +98,19 @@ export class AuthenticationService {
       response_type: 'code',
       scope: 'openid profile home',
       post_logout_redirect_uri: this.thisBaseUrl(),
-  //  post_login_route: 'home',
+      post_login_route: 'intro-menu',
       log_console_warning_active: true,
   //  log_console_debug_active: true,
       max_id_token_iat_offset_allowed_in_seconds: 30,
-      start_checksession: true
+      start_checksession: true,
+      iss_validation_off: true
     };
   }
 
   private getAuthWellKnownEndpoints(): AuthWellKnownEndpoints {
     return {
       jwks_uri: this.idBaseUrl() + '/.well-known/openid-configuration/jwks',
-      issuer: this.idBaseUrl(),
+      issuer: "http://identity",
       authorization_endpoint: this.idBaseUrl() + '/connect/authorize',
       token_endpoint: this.idBaseUrl() + '/connect/token',
       userinfo_endpoint: this.idBaseUrl() + '/connect/userinfo',

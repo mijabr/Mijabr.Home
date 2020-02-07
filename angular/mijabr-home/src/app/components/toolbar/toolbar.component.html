@@ -9,6 +9,6 @@
     <div class='account' (click)='onClickAccount()'>
       <lib-icon-account background='black' fill='white' size='24'></lib-icon-account>
     </div>
-    <div *ngId='isLoggedin' class='username'>Greetings {{username}}</div>
+    <div *ngIf='isLoggedin' class='username'>Greetings {{username}}</div>
   </div>
 </div>

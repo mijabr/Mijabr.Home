@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
 namespace Mijabr.Home.Controllers
 {
     [Route("home/api/identity")]
-    [Authorize]
     public class IdentityController : ControllerBase
     {
         [HttpGet]
